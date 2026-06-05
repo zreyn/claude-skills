@@ -43,15 +43,15 @@ claude-skills/
 ## Develop
 
 ```sh
-# One-off validation
-python scripts/validate.py
-
-# Run the tests
-pip install pyyaml pytest
-pytest -q
+# Run every check CI runs, locally.
+# First run creates .venv/ and installs requirements-dev.txt; ~10s.
+# Subsequent runs are fast.
+./scripts/check.sh
 ```
 
-CI runs both on every push and PR to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a new skill.
+Optional: `brew install markdownlint-cli2` to skip the npx fallback on the markdown lint step.
+
+CI runs the same checks on every push and PR to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a new skill.
 
 ## License
 
