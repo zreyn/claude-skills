@@ -15,7 +15,7 @@ More to come.
 In Claude Code (or Cowork), add this repo as a marketplace and install the plugin:
 
 ```
-/plugin marketplace add zgreyn/claude-skills
+/plugin marketplace add zreyn/claude-skills
 /plugin install zane-skills@zane-skills
 ```
 
