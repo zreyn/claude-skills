@@ -48,14 +48,13 @@ Edit `.claude-plugin/marketplace.json` and add the skill path to an existing plu
 }
 ```
 
-## 4. Run the validator locally
+## 4. Run the checks locally
 
 ```sh
-python scripts/validate.py
-pytest -q
+./scripts/check.sh
 ```
 
-Both should pass. CI runs the same commands.
+This runs the validator, the validator's unit tests, and markdownlint — the same three checks CI runs. Green locally = green in CI.
 
 ## 5. Commit and push
 
