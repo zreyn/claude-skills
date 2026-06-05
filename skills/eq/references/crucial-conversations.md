@@ -35,6 +35,7 @@ Two tools to rebuild safety:
 > "I don't want you to think I'm questioning your commitment to this project. You've been carrying a lot. What I do want is to figure out how we caught the deadline slip so late."
 
 **CRIB** — when purposes are actually diverging:
+
 - **C**ommit to seek mutual purpose. Say it out loud: "It seems like we want different things. Let's find one we both care about."
 - **R**ecognize the purpose behind each strategy. They want a thing because of a deeper why; same for you. Surface the whys.
 - **I**nvent a mutual purpose at the higher level both whys share.

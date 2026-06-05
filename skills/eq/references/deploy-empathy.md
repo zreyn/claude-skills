@@ -75,7 +75,7 @@ This frames the conversation around Zane's interpretation and asks the friend to
 
 **Deploy Empathy version:**
 > "Hey, I wanted to check in — I noticed plans have been getting harder to pin down on your end. *[gentle tone]* No agenda, I just want to understand what's going on for you these days." *[Pause. Wait.]*
-
+>
 > Friend: "Yeah, it's been… I don't know, things have been kind of a lot."
 > Zane: *[pause]* "Kind of a lot?" *[mirror]*
 > Friend: "Like work-wise and with my mom and I'm just exhausted."

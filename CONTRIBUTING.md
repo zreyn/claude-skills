@@ -4,7 +4,7 @@ This is a personal repo, but the conventions below are what keep it sane as it g
 
 ## 1. Scaffold the folder
 
-```
+```text
 skills/<name>/
 ├── SKILL.md         # required
 ├── references/      # optional: longer docs loaded on demand
