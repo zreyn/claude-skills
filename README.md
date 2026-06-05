@@ -21,6 +21,16 @@ In Claude Code (or Cowork), add this repo as a marketplace and install the plugi
 
 The first argument to `install` is the plugin name; the second is the marketplace name. Both are `zane-skills` here.
 
+## Update
+
+In Claude Code (or Cowork):
+
+```text
+/plugin marketplace update zane-skills
+```
+
+Then you will be prompted to `/reload-plugins` (or restart).
+
 ## Repo layout
 
 ```text
