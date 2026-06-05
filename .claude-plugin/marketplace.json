@@ -1,0 +1,22 @@
+{
+  "name": "zane-skills",
+  "owner": {
+    "name": "Zane Reynolds",
+    "email": "zane.reynolds@gmail.com"
+  },
+  "metadata": {
+    "description": "Zane's personal Claude skills",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "zane-skills",
+      "description": "Zane's personal collection of Claude skills — currently: eq (communication coach drawing on books I've read).",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/eq"
+      ]
+    }
+  ]
+}
