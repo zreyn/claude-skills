@@ -1,0 +1,4 @@
+# Dev dependencies for scripts/check.sh and CI.
+# Keep this lean — only what the validator and its tests need.
+pyyaml>=6.0
+pytest>=8.0
