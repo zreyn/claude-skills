@@ -87,13 +87,23 @@ If there's a relevant book-specific frame loaded from `references/`, weave it in
 
 ## When to load a book-specific reference
 
-The `references/` directory holds notes from specific books Zane wants to draw on. Load one when:
+The `references/` directory holds distilled notes from the books Zane has actually read. Each file is ~150 lines and covers: posture, 4–8 concrete moves, a worked example, and when not to use that frame. **Don't load all of them.** Pick the one that fits the situation; load a second one only if a different phase of the conversation calls for it.
 
-- Zane names the framework explicitly ("use NVC framing", "what would Voss do here").
-- The situation maps cleanly onto a known frame (a high-stakes work conversation → Crucial Conversations; a negotiation → Never Split the Difference; an emotionally charged personal conversation where Zane keeps getting reactive → NVC).
-- The default approach has stalled across a few turns and a sharper frame would help.
+The full text of each book is **not** in this repo — the distilled reference file is the working copy. If a reference file feels too thin for the situation, ask Zane and he can paste relevant passages from his copy.
 
-If `references/` is empty or there's no clear match, run the skill on the general guidance above. The point is to help Zane, not to demonstrate the books.
+### Routing table
+
+| If the situation is… | Load this reference |
+| --- | --- |
+| High-stakes work or relational conversation where Zane has hard content to share, or a recurring fight that keeps going sideways, or he catches himself going silent / escalating | [`crucial-conversations.md`](references/crucial-conversations.md) |
+| Zane needs to **understand** what someone is going through — a friend who's distant, a partner who seems off, a coworker venting — and his job is listening, not responding with his own content | [`deploy-empathy.md`](references/deploy-empathy.md) |
+| Zane needs **cooperation** — an ask, getting buy-in, behavior change in someone he has no formal authority over, or repairing a relationship after he was too direct | [`how-to-win-friends.md`](references/how-to-win-friends.md) |
+
+A conversation often shifts phase mid-stream. A common pattern: start by listening (Deploy Empathy), then once Zane understands what's actually going on, switch to either delivering hard content (Crucial Conversations) or making an ask (Carnegie). When that happens, say so out loud — "we've been in listening mode; I think now you need to actually tell them X" — and consult the second reference.
+
+### Adding more books
+
+When Zane adds notes from another book, follow the format in [`references/README.md`](references/README.md): posture, concrete moves, worked example, when-not-to-use. Then add a row to the routing table above.
 
 ## A note on tone with Zane himself
 
