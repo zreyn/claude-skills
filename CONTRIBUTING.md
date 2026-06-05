@@ -73,3 +73,23 @@ For substantive changes (new instructions, big rewrites), it's worth running a s
 ## Removing a skill
 
 Delete the folder and remove its entry from `marketplace.json`. The validator will fail if you delete one without the other.
+
+## Branch protection
+
+`main` is protected. Changes must go through a pull request, and the two CI checks (`Validate skills and marketplace` and `Lint markdown`) must pass before merge. Direct pushes to `main`, force-pushes, and branch deletion are blocked.
+
+The policy lives at [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) so it's version-controlled. To apply it (once, or after editing):
+
+```sh
+gh api -X POST repos/zreyn/claude-skills/rulesets \
+  --input .github/rulesets/main-protection.json
+```
+
+If a ruleset by that name already exists, you'll get a 422; in that case find the ID and update it:
+
+```sh
+RULESET_ID=$(gh api repos/zreyn/claude-skills/rulesets \
+  --jq '.[] | select(.name == "main protection") | .id')
+gh api -X PUT repos/zreyn/claude-skills/rulesets/$RULESET_ID \
+  --input .github/rulesets/main-protection.json
+```
