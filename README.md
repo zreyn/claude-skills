@@ -14,7 +14,7 @@ More to come.
 
 In Claude Code (or Cowork), add this repo as a marketplace and install the plugin:
 
-```
+```text
 /plugin marketplace add zreyn/claude-skills
 /plugin install zane-skills@zane-skills
 ```
@@ -23,7 +23,7 @@ The first argument to `install` is the plugin name; the second is the marketplac
 
 ## Repo layout
 
-```
+```text
 claude-skills/
 ├── .claude-plugin/
 │   └── marketplace.json     # the marketplace catalog
