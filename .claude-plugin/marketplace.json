@@ -11,12 +11,13 @@
   "plugins": [
     {
       "name": "zane-skills",
-      "description": "Zane's personal collection of Claude skills — currently: eq (communication coach drawing on books I've read) and getmylifetogether (a chief of staff for work and home todos with local memory).",
+      "description": "Zane's personal collection of Claude skills — currently: eq (communication coach drawing on books I've read), getmylifetogether (a chief of staff for work and home todos with local memory), and workout (a workout coach that builds a profile, plans each day, and tracks progress).",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/eq",
-        "./skills/getmylifetogether"
+        "./skills/getmylifetogether",
+        "./skills/workout"
       ]
     }
   ]
