@@ -41,6 +41,7 @@ Everything persistent lives in a `getmylifetogether/` folder under a *memory roo
 | `open.md` | Every open item, grouped by area and project | every session |
 | `done.md` | Completed items, newest first | when asked "did I…", or to undo |
 | `dropped.md` | Items the user said to forget, with the drop date | during drop review, or when they mention a dropped thing |
+| `ideas.md` | Cool ideas worth exploring later — not todos, never nag | when they mention an idea, ask "show ideas", or want something to explore |
 | `journal/YYYY-MM-DD.md` | One file per captured day: what got done, what came up, decisions and context | for "what did I do last week", or when context on a project is thin |
 
 Formats are in [`references/store-format.md`](references/store-format.md). Load it when bootstrapping, when writing a file type you haven't written this session, or whenever you're unsure of a field.
@@ -52,7 +53,7 @@ Formats are in [`references/store-format.md`](references/store-format.md). Load 
 
 If neither exists yet: in Claude Code on the user's machine, create `~/.claude/getmylifetogether/`. In Cowork or any sandbox where `~/.claude/` isn't the CLI's config directory, **don't write to `~`** — it won't survive. Tell the user memory needs a folder they own, ask them to attach one (a folder like `~/Documents/Claude/` works well), and create `claude-memory/getmylifetogether/` inside it. Setup notes for both environments are in the repo README.
 
-**At the start of every session:** list the store. If it doesn't exist, **bootstrap it** — create the directory and seed `README.md`, `profile.md`, `projects.md`, `open.md`, `done.md`, `dropped.md`, and an empty `journal/` from the templates in the store-format reference. Then ask one thing: what to call them. Projects and preferences fill in from use; don't run an intake interview. Then read `profile.md`, `projects.md`, and `open.md`.
+**At the start of every session:** list the store. If it doesn't exist, **bootstrap it** — create the directory and seed `README.md`, `profile.md`, `projects.md`, `open.md`, `done.md`, `dropped.md`, `ideas.md`, and an empty `journal/` from the templates in the store-format reference. Then ask one thing: what to call them. Projects and preferences fill in from use; don't run an intake interview. Then read `profile.md`, `projects.md`, and `open.md`.
 
 **Today's date** matters for everything here. Use the date from context; if you aren't certain, run `date +%F`. All stored dates are ISO (`YYYY-MM-DD`).
 
@@ -64,10 +65,11 @@ A session often mixes modes. Follow the user; the table is a routing aid, not a 
 
 | The user… | Mode | Load |
 | --- | --- | --- |
-| Tells you what they did, what's going on, or what's new ("here's my day", "I need to…", "remind me to…", a long dictated recap) | **Capture** | `prompts/capture.md`, then `prompts/clarify.md` for the question pass |
+| Tells you what they did, what's going on, or what's new ("here's my day", "I need to…", "remind me to…", "I had an idea…", a long dictated recap) | **Capture** | `prompts/capture.md`, then `prompts/clarify.md` for the question pass |
 | Asks what's on their plate ("what's on my list", "what do I need to do today", "what should I work on", "what's on for this week") | **Briefing** | `prompts/briefing.md`; then `prompts/reactions.md` as they respond; then `prompts/drop-review.md` at the end |
 | Reacts to an item anywhere ("did that", "forget about that", "later", "snooze that", "that's blocked on Sam") | **Reaction** | `prompts/reactions.md` |
 | Asks to clean up, or you notice long-dropped items at the end of a briefing | **Drop review** | `prompts/drop-review.md` |
+| Wants an idea back ("show ideas", "what was that idea about…", "anything I could explore this weekend?") | **Lookup** | nothing extra — read `ideas.md`, list or pick, and offer to turn one into an item |
 | Asks about the past ("did I ever…", "what did I do last week", "when did I finish X") | **Lookup** | nothing extra — read `done.md` and `journal/`, answer plainly |
 
 ## Invariants — what the prompt files can't override

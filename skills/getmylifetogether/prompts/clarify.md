@@ -31,6 +31,8 @@ Everything else you either infer (and flag in the confirmation so they can corre
 
 Apply answers directly and don't re-confirm them; a one-word acknowledgement is enough.
 
+The once-a-day ideas question at the end of a recap (see `capture.md`) is a standing question, not a clarifying one. It doesn't count toward the three, and it always comes last.
+
 ## Worked example
 
 **Confirmation just shown:** Added #17 Look into a standing desk (someday) and #18 Renew car registration (Home / Admin, due Sep 30).
