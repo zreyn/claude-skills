@@ -8,6 +8,7 @@ This is a personal repo, but the conventions below are what keep it sane as it g
 skills/<name>/
 ├── SKILL.md         # required
 ├── references/      # optional: longer docs loaded on demand
+├── prompts/         # optional: per-mode behavior files the user edits over time
 ├── scripts/         # optional: helper scripts the skill calls
 └── assets/          # optional: templates, fonts, icons
 ```
