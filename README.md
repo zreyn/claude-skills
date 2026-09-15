@@ -7,6 +7,7 @@ Zane's personal Claude skills. This repo is a [Claude Code plugin marketplace](h
 | Skill | What it does |
 | --- | --- |
 | [`eq`](skills/eq/SKILL.md) | Communication coach. Helps me model the other person, clarify what I actually want, and draft messages that land. |
+| [`getmylifetogether`](skills/getmylifetogether/SKILL.md) | Chief of staff for work and home. Takes messy end-of-day recaps and new todos, remembers them locally, and gives me a clustered "what's on my list" each morning. Behavior lives in editable prompt files. |
 
 More to come.
 
@@ -38,9 +39,13 @@ claude-skills/
 ├── .claude-plugin/
 │   └── marketplace.json     # the marketplace catalog
 ├── skills/
-│   └── eq/
-│       ├── SKILL.md         # the skill itself
-│       └── references/      # optional book-specific notes
+│   ├── eq/
+│   │   ├── SKILL.md         # the skill itself
+│   │   └── references/      # optional book-specific notes
+│   └── getmylifetogether/
+│       ├── SKILL.md         # memory layout, routing, invariants
+│       ├── prompts/         # one editable prompt per mode
+│       └── references/      # memory store formats
 ├── scripts/
 │   └── validate.py          # frontmatter + marketplace validator
 ├── tests/

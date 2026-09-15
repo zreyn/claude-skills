@@ -11,11 +11,12 @@
   "plugins": [
     {
       "name": "zane-skills",
-      "description": "Zane's personal collection of Claude skills — currently: eq (communication coach drawing on books I've read).",
+      "description": "Zane's personal collection of Claude skills — currently: eq (communication coach drawing on books I've read) and getmylifetogether (a chief of staff for work and home todos with local memory).",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/eq"
+        "./skills/eq",
+        "./skills/getmylifetogether"
       ]
     }
   ]
