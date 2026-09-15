@@ -14,6 +14,7 @@ All dates are `YYYY-MM-DD`. Ids are `#` followed by an integer, assigned by taki
 ├── open.md          # every open item, grouped by area and project
 ├── done.md          # completed items, newest date first
 ├── dropped.md       # forgotten items, with drop and review dates
+├── ideas.md         # cool ideas to explore later; never todos, never nag
 └── journal/
     └── YYYY-MM-DD.md   # one file per captured day
 ```
@@ -125,6 +126,19 @@ Newest date section first. One line per item: id, title, area / project, when it
 
 One line per item, newest drop first. `reason` only if the user gave one. `review` is drop date plus `drop_review_days`, pushed forward each time the user defers in a drop review. Items leave this file only two ways: the user restores them (back to `open.md`) or the user says to delete them in a drop review (line removed, count noted in the journal).
 
+## `ideas.md`
+
+```markdown
+# Ideas
+
+- 2026-09-15 — Runbook that generates itself from the terraform. (Work / Platform migration) Why: half the runbook is already in the tf comments.
+- 2026-09-12 — Family newsletter, once a quarter. (Home)
+- 2026-09-03 — Learn Rust properly. → #19
+- 2026-08-20 — Standing-desk treadmill. shelved 2026-09-10
+```
+
+One line per idea, newest first: date, the idea in the user's words, an optional area or project in parentheses, an optional `Why:` clause if they said what made it interesting. Two possible trailers: `→ #id` once it's been turned into an item, or `shelved DATE` if they retired it. Nothing in this file has a `next`, a `due`, or a status, and nothing here appears in a briefing beyond the count. Ideas are never deleted by the drop review; shelved ones just stay shelved.
+
 ## `journal/YYYY-MM-DD.md`
 
 ```markdown
@@ -145,12 +159,16 @@ One line per item, newest drop first. `reason` only if the user gave one. `revie
 - Migration cutover pushed to October (talked with Sam). Nothing to do on it until then.
 - Plumber never called back.
 
+## Ideas
+
+- Runbook that generates itself from the terraform.
+
 ## Drop review
 
 - Deleted #3; restored #5.
 ```
 
-One file per day that had a capture or a drop review. Short bullets in the user's own terms. `## Did` and `## Came up` mirror what was written to `done.md` and `open.md`; `## Context` is the part that lives nowhere else — decisions, who said what, dates on the horizon, how a project is going. `## Drop review` appears only on days a review ran. This is the source for "what did I do last week" and for reconstructing why a project is where it is.
+One file per day that had a capture or a drop review. Short bullets in the user's own terms. `## Did` and `## Came up` mirror what was written to `done.md` and `open.md`; `## Context` is the part that lives nowhere else — decisions, who said what, dates on the horizon, how a project is going. `## Ideas` records the answer to the once-a-day ideas question (`- none` if they had none) so the question isn't asked twice. `## Drop review` appears only on days a review ran. This is the source for "what did I do last week" and for reconstructing why a project is where it is.
 
 ## Bootstrap templates
 
@@ -209,4 +227,10 @@ described in the skill's `references/store-format.md`. Nothing here is committed
 
 ```markdown
 # Dropped
+```
+
+`ideas.md`:
+
+```markdown
+# Ideas
 ```

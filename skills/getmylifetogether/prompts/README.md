@@ -4,7 +4,7 @@ These files are the skill's behavior, one per mode. They're in git on purpose: a
 
 | File | Governs |
 | --- | --- |
-| [`capture.md`](capture.md) | How a recap or a new todo gets parsed and written to the store. |
+| [`capture.md`](capture.md) | How a recap or a new todo gets parsed and written to the store, and the once-a-day "any cool ideas?" question. |
 | [`clarify.md`](clarify.md) | When a clarifying question is worth asking, and how to ask it. |
 | [`briefing.md`](briefing.md) | What "what's on my list" looks like: clustering, ordering, what's hidden. |
 | [`reactions.md`](reactions.md) | The vocabulary of quick reactions ("did that", "forget about that", "later") and what each one writes. |

@@ -14,7 +14,10 @@ Load this whenever the user responds to items, during a briefing or on their own
 | "that's actually home", "move that to the migration project", "call it X instead" | Edit fields. | Update the item; create the project if new. |
 | "add …", "also I need to…", "oh and…" | Capture inline. | Follow `capture.md` and `clarify.md`. |
 | "undo", "no, bring that back", "un-drop #7" | Reverse the last change, or restore the named item. | Move it back to `open.md`, restore fields, touch it today. Note "restored" in the item's context. |
-| "show someday", "show dropped", "show what I did this week", "show done" | List. | Nothing. |
+| "idea: …", "I had an idea", "it'd be cool if…" | Save it as an idea, not a todo. | Append to `ideas.md` with today's date; echo under `## Ideas` in today's journal. |
+| "let's actually do that idea", "make that a todo", "promote it" | Turn an idea into an open item. | New item in `open.md` (follow `capture.md` for fields); mark the idea line `→ #id`. |
+| "shelve that idea", "never mind that one" | Retire an idea quietly. Ideas aren't dropped items — no review, no deletion prompt. | Mark the idea line `shelved YYYY-MM-DD`. |
+| "show ideas", "show someday", "show dropped", "show what I did this week", "show done" | List. | Nothing. |
 
 Every write updates the item's `touched` date. Anything that changes the shape of a project (new project, status line) also updates `projects.md`.
 
