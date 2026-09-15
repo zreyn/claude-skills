@@ -34,17 +34,24 @@ The steps below are a default order, not a script. Follow the user's lead. If th
 
 ## Memory — the people the skill remembers
 
-The skill keeps a private, persistent memory of the user and the people they talk about, in `~/.claude/eq/people/` (outside this repo — never committed). This is what lets the skill pick up a relationship where it left off instead of re-interviewing the user every time. It holds two kinds of memory: **profiles** (one file per person, including the user's own `_self.md`) and a **relationship map** (how those people relate to each other).
+The skill keeps a private, persistent memory of the user and the people they talk about, in a **store** on disk (outside this repo — never committed). This is what lets the skill pick up a relationship where it left off instead of re-interviewing the user every time. It holds two kinds of memory: **profiles** (one file per person, including the user's own `_self.md`) and a **relationship map** (how those people relate to each other).
 
 **At the start of every eq session:**
 
-1. List `~/.claude/eq/people/`. **If it doesn't exist, bootstrap it** (see below).
+1. **Find the store.** Its location depends on where Claude is running (see "Where the store lives" below). List it. **If it doesn't exist, bootstrap it** (see below).
 2. **Always read `_self.md`** — the user's own profile (how they tend to communicate, their triggers, patterns, and how they want to be coached). Let it shape how you frame things back to them, and pick up their name from it. If it's unseeded, that's fine; you'll learn as you go.
 3. **Always read `_map.md`** — the relationship graph (who relates to whom, from the user's point of view). It's small and gives you the system view, not just the dyad.
 4. If you can tell who the conversation is about, read that person's file if it exists (`<name>.md`, kebab-case). Use it to seed Step 2 — and **confirm rather than re-ask**: "Last time, Sarah needed the bottom line up front before any context — still true?"
 5. **Follow the edges.** If `_map.md` shows the subject is connected to other people who matter to this situation — their manager, an ally, someone caught in the middle — read those files too. The relevant unit is often the system, not the single person.
 
-**Bootstrapping the store (first run).** If `~/.claude/eq/people/` doesn't exist, create it and seed four files: `README.md` (the store's conventions), `_template.md` (the shape of a person file), `_map.md` (an empty relationship map with its legend), and `_self.md` (the user's own profile, started from the same fields as the template plus "how I want to be coached"). Then, lightly and conversationally, learn who you're coaching — at minimum, ask what to call them — and seed `_self.md`. Don't turn this into an intake interview; a name and whatever they volunteer is enough to start, and the profile fills in over time. (The format for all four files is described in `~/.claude/eq/people/README.md` once it exists; until then, follow the structure outlined in this Memory section and in Step 6.)
+**Bootstrapping the store (first run).** If the store doesn't exist, create it at the location resolved below and seed four files: `README.md` (the store's conventions), `_template.md` (the shape of a person file), `_map.md` (an empty relationship map with its legend), and `_self.md` (the user's own profile, started from the same fields as the template plus "how I want to be coached"). Then, lightly and conversationally, learn who you're coaching — at minimum, ask what to call them — and seed `_self.md`. Don't turn this into an intake interview; a name and whatever they volunteer is enough to start, and the profile fills in over time. (The format for all four files is described in the store's own `README.md` once it exists; until then, follow the structure outlined in this Memory section and in Step 6.)
+
+**Where the store lives.** The store is `eq/people/` under a *memory root*. Resolve the root in this order, and use the first that exists:
+
+1. A `claude-memory/` folder at the top of the working directory or of any folder attached to the session. This is how it works in **Cowork**, where `~` is a sandbox that isn't the user's home and (in cloud sessions) is discarded when the session ends.
+2. `~/.claude/`, when it's the Claude Code CLI's own config directory on the user's machine — it will contain `settings.json` or a `projects/` folder. This is the default for **Claude Code**.
+
+If neither exists yet: in Claude Code on the user's machine, create the store under `~/.claude/`. In Cowork or any sandbox where `~/.claude/` isn't the CLI's config directory, **don't write to `~`** — it won't survive. Tell the user memory needs a folder they own, ask them to attach one (a folder like `~/Documents/Claude/` works well), and create `claude-memory/eq/people/` inside it. Setup notes for both environments are in the repo README.
 
 **During the conversation**, draw on what you remember and notice when reality contradicts the stored note (people change; the note may be stale). Flag the contradiction rather than trusting the file. Treat every edge in `_map.md` as **the user's perception** — partial and possibly wrong — and never invent a relationship to fill a gap.
 

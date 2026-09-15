@@ -1,13 +1,13 @@
 # Memory store format
 
-The store lives at `~/.claude/getmylifetogether/`. Load this file when bootstrapping the store, when writing a file type you haven't written this session, or whenever you're unsure of a field. The user may hand-edit any of these files; keep them readable and don't fight their edits.
+The store is a `getmylifetogether/` folder under the memory root that `SKILL.md` resolves (`~/.claude/` in Claude Code on the user's machine; a `claude-memory/` folder in an attached workspace in Cowork). Load this file when bootstrapping the store, when writing a file type you haven't written this session, or whenever you're unsure of a field. The user may hand-edit any of these files; keep them readable and don't fight their edits.
 
 All dates are `YYYY-MM-DD`. Ids are `#` followed by an integer, assigned by taking the highest id anywhere in `open.md`, `done.md`, or `dropped.md` and adding one. Ids are never reused.
 
 ## Layout
 
 ```text
-~/.claude/getmylifetogether/
+<memory root>/getmylifetogether/
 ├── README.md        # what this folder is; safe-to-edit note
 ├── profile.md       # name, area order, thresholds, learned preferences
 ├── projects.md      # the cluster map: areas → projects with status lines
