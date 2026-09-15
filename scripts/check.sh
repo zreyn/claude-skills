@@ -46,13 +46,13 @@ fi
 
 # --- Step 1-3: the actual checks -------------------------------------------
 
-section "1/3  Validate marketplace + skills"
+section "1/4  Validate marketplace + skills"
 "$VENV_PY" scripts/validate.py
 
-section "2/3  Run validator unit tests"
+section "2/4  Run unit tests"
 "$VENV_PY" -m pytest -q tests/
 
-section "3/3  Lint markdown"
+section "3/4  Lint markdown"
 if command -v markdownlint-cli2 >/dev/null 2>&1; then
   markdownlint-cli2 "**/*.md" "!node_modules"
 else
@@ -60,6 +60,16 @@ else
   # invocation downloads markdownlint-cli2 into npx's cache; subsequent
   # runs are fast.
   npx --yes markdownlint-cli2 "**/*.md" "!node_modules"
+fi
+
+# --- Step 4 (local only): version bump ---------------------------------------
+# CI runs this against the PR's base branch. Locally we approximate with
+# origin/main when it exists and we're not on main; otherwise skip quietly.
+
+if git rev-parse --verify --quiet origin/main >/dev/null \
+   && [[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]; then
+  section "4/4  Plugin version bump (vs origin/main)"
+  "$VENV_PY" scripts/check_version_bump.py origin/main
 fi
 
 printf '\n\033[1;32mAll checks passed.\033[0m\n'
