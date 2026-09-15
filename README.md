@@ -74,10 +74,12 @@ claude-skills/
 │       ├── prompts/         # onboarding, check-in, generate, debrief, review
 │       └── references/      # programming principles + store formats
 ├── scripts/
-│   └── validate.py          # frontmatter + marketplace validator
+│   ├── validate.py          # frontmatter + marketplace validator
+│   └── check_version_bump.py # fails a PR that changes skills/ without a version bump
 ├── tests/
-│   └── test_validate.py     # unit tests for the validator
-├── .github/workflows/ci.yml # CI: validate + markdown lint
+│   ├── test_validate.py     # unit tests for the validator
+│   └── test_version_bump.py # unit tests for the bump check
+├── .github/workflows/ci.yml # CI: validate + markdown lint + version bump
 ├── CONTRIBUTING.md
 └── README.md
 ```

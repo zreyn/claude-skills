@@ -49,15 +49,25 @@ Edit `.claude-plugin/marketplace.json` and add the skill path to an existing plu
 }
 ```
 
-## 4. Run the checks locally
+## 4. Bump the plugin version
+
+The plugin entry in `marketplace.json` declares a `version`. That pins it: Claude Code and claude.ai only pull an update when the string changes, so **every PR that touches anything under `skills/` must bump it**, or nobody gets the change. Semantic versioning, loosely:
+
+- **patch** (`0.2.0` → `0.2.1`) — wording, prompt tweaks, fixes inside an existing skill
+- **minor** (`0.2.0` → `0.3.0`) — a new skill, a new mode or prompt file, a memory-format change
+- **major** — reserved for when a change would break an existing memory store
+
+CI fails a PR that changes `skills/` without a bump (`scripts/check_version_bump.py`), and `./scripts/check.sh` runs the same check locally against `origin/main`.
+
+## 5. Run the checks locally
 
 ```sh
 ./scripts/check.sh
 ```
 
-This runs the validator, the validator's unit tests, and markdownlint — the same three checks CI runs. Green locally = green in CI.
+This runs the validator, the unit tests, markdownlint, and (on a branch) the version-bump check — the same checks CI runs. Green locally = green in CI.
 
-## 5. Commit and push
+## 6. Commit and push
 
 ```sh
 git add skills/<name>/ .claude-plugin/marketplace.json
@@ -77,7 +87,7 @@ Delete the folder and remove its entry from `marketplace.json`. The validator wi
 
 ## Branch protection
 
-`main` is protected. Changes must go through a pull request, and the two CI checks (`Validate skills and marketplace` and `Lint markdown`) must pass before merge. Direct pushes to `main`, force-pushes, and branch deletion are blocked.
+`main` is protected. Changes must go through a pull request, and the three CI checks (`Validate skills and marketplace`, `Lint markdown`, and `Plugin version bumped when skills change`) must pass before merge. Direct pushes to `main`, force-pushes, and branch deletion are blocked.
 
 The policy lives at [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) so it's version-controlled. To apply it (once, or after editing):
 

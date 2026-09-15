@@ -32,6 +32,28 @@ jobs:
       - name: Run unit tests on the validator
         run: pytest -q tests/
 
+  version-bump:
+    name: Plugin version bumped when skills change
+    # Only meaningful on a PR: the check compares the branch against its base.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need history for the base branch, not just the merge commit.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # A plugin that declares a version is pinned to it; installed copies
+      # only update when the string changes. This fails the PR if anything
+      # under skills/ changed without a bump in marketplace.json.
+      - name: Check plugin version bump
+        run: python scripts/check_version_bump.py origin/${{ github.base_ref }}
+
   lint-markdown:
     name: Lint markdown
     runs-on: ubuntu-latest

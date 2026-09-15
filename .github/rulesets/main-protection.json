@@ -31,7 +31,8 @@
         "strict_required_status_checks_policy": true,
         "required_status_checks": [
           {"context": "Validate skills and marketplace"},
-          {"context": "Lint markdown"}
+          {"context": "Lint markdown"},
+          {"context": "Plugin version bumped when skills change"}
         ]
       }
     }
