@@ -32,7 +32,7 @@ The skill is written generically. It learns the user's name and preferences from
 
 ## Memory — where things live
 
-Everything persistent lives in `~/.claude/getmylifetogether/` (outside this repo, never committed):
+Everything persistent lives in a `getmylifetogether/` folder under a *memory root* (outside this repo, never committed; see "Where the store lives" below):
 
 | File | Holds | Read it… |
 | --- | --- | --- |
@@ -44,6 +44,13 @@ Everything persistent lives in `~/.claude/getmylifetogether/` (outside this repo
 | `journal/YYYY-MM-DD.md` | One file per captured day: what got done, what came up, decisions and context | for "what did I do last week", or when context on a project is thin |
 
 Formats are in [`references/store-format.md`](references/store-format.md). Load it when bootstrapping, when writing a file type you haven't written this session, or whenever you're unsure of a field.
+
+**Where the store lives.** Resolve the memory root in this order, and use the first that exists:
+
+1. A `claude-memory/` folder at the top of the working directory or of any folder attached to the session. This is how it works in **Cowork**, where `~` is a sandbox that isn't the user's home and (in cloud sessions) is discarded when the session ends.
+2. `~/.claude/`, when it's the Claude Code CLI's own config directory on the user's machine — it will contain `settings.json` or a `projects/` folder. This is the default for **Claude Code**.
+
+If neither exists yet: in Claude Code on the user's machine, create `~/.claude/getmylifetogether/`. In Cowork or any sandbox where `~/.claude/` isn't the CLI's config directory, **don't write to `~`** — it won't survive. Tell the user memory needs a folder they own, ask them to attach one (a folder like `~/Documents/Claude/` works well), and create `claude-memory/getmylifetogether/` inside it. Setup notes for both environments are in the repo README.
 
 **At the start of every session:** list the store. If it doesn't exist, **bootstrap it** — create the directory and seed `README.md`, `profile.md`, `projects.md`, `open.md`, `done.md`, `dropped.md`, and an empty `journal/` from the templates in the store-format reference. Then ask one thing: what to call them. Projects and preferences fill in from use; don't run an intake interview. Then read `profile.md`, `projects.md`, and `open.md`.
 

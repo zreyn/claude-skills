@@ -32,6 +32,27 @@ In Claude Code (or Cowork):
 
 Then you will be prompted to `/reload-plugins` (or restart).
 
+## Memory location
+
+Both skills keep private memory on disk, never in this repo. Where it lives depends on how you run Claude, because Cowork runs the agent in a sandbox where `~` is not your home directory (cloud sessions are discarded when they end; local sessions live in a VM you can't browse).
+
+| Environment | Memory root | Setup |
+| --- | --- | --- |
+| Claude Code (CLI, desktop app, IDE) on your machine | `~/.claude/` | None. Stores are created on first use: `~/.claude/eq/people/` and `~/.claude/getmylifetogether/`. |
+| Cowork | `claude-memory/` inside a folder you attach | Once: create a folder you'll keep, e.g. `~/Documents/Claude/`, and an empty `claude-memory/` inside it. Every session: attach that folder. The skills find `claude-memory/` and create their stores under it on first use. |
+
+Resolution order, for both skills: a `claude-memory/` folder at the top of the working directory or an attached folder wins; otherwise `~/.claude/` when it's the Claude Code config directory; otherwise the skill asks you where memory should go rather than writing somewhere that won't persist.
+
+To share one set of memory between Claude Code and Cowork, point the CLI at the Cowork folder:
+
+```sh
+mkdir -p ~/Documents/Claude/claude-memory
+ln -s ~/Documents/Claude/claude-memory/eq ~/.claude/eq
+ln -s ~/Documents/Claude/claude-memory/getmylifetogether ~/.claude/getmylifetogether
+```
+
+If you've already been using a skill from the CLI, move the existing folder into `claude-memory/` first, then create the symlink.
+
 ## Repo layout
 
 ```text
